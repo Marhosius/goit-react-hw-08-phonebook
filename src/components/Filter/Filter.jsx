@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import css from "./phonebook.module.css";
+import css from '../phonebook.module.css';
 
 export const Filter = ({ onFilterChange }) => {
     const onInputChange = (event) => {

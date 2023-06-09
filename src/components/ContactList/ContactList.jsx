@@ -1,7 +1,7 @@
 
-import ContactListitem from "./ContactListitem";
+import ContactListitem from "../ContactListitem/ContactListitem";
 import PropTypes from "prop-types";
-import css from "./phonebook.module.css";
+import css from "../phonebook.module.css";
 
 export const ContactList = ({ filteredContacts, onDeleteContact }) => {
     return (

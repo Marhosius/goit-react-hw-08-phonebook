@@ -1,6 +1,6 @@
 
 import PropTypes from "prop-types";
-import css from "./phonebook.module.css";
+import css from "../phonebook.module.css";
 
 export const ContactListitem = ({ onDeleteContact, name, number, id }) => {
     const onDelete = (event) => {
