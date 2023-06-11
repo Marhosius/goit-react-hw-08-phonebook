@@ -1,0 +1,11 @@
+.phonebookContacts {
+    margin: -20px;
+    width: 340px;
+    padding: 0 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}

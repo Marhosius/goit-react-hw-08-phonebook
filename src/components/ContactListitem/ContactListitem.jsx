@@ -1,11 +1,14 @@
 
 import PropTypes from "prop-types";
-import css from "../phonebook.module.css";
+import css from "./ContactListitem.module.css";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "store/slice";
 
 export const ContactListitem = ({ onDeleteContact, name, number, id }) => {
+    const dispatch = useDispatch()
     const onDelete = (event) => {
         const { id } = event.target;
-        onDeleteContact(id);
+        dispatch(deleteContact(id))
     }
     return (
         <li className={css.phonebookContactsItem}>
@@ -18,8 +21,7 @@ export const ContactListitem = ({ onDeleteContact, name, number, id }) => {
 ContactListitem.propTypes = {
     id: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    onDeleteContact: PropTypes.func
+    name: PropTypes.string.isRequired
 
 }
 

@@ -1,10 +1,12 @@
-import PropTypes from "prop-types";
-import css from '../phonebook.module.css';
+import css from './Filter.module.css';
+import { useDispatch } from "react-redux";
+import { filterChange } from "store/slice";
 
-export const Filter = ({ onFilterChange }) => {
+export const Filter = () => {
+    const dispatch = useDispatch()
     const onInputChange = (event) => {
         const { value } = event.target;
-        onFilterChange(value);
+        dispatch(filterChange(value));
     }
 
     return (
@@ -19,10 +21,6 @@ export const Filter = ({ onFilterChange }) => {
             />
         </form>
     )
-}
-
-Filter.propTypes = {
-    onFilterChange: PropTypes.func.isRequired
 }
 
 export default Filter
