@@ -15,6 +15,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
     key: 'Phonebook',
     storage,
+    blacklist: ['filter']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer)

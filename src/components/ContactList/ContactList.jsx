@@ -1,9 +1,14 @@
 
+import { contactsSelector, filterSelector } from "store/slice";
 import ContactListitem from "../ContactListitem/ContactListitem";
-import PropTypes from "prop-types";
 import css from "./ContactList.module.css";
+import { useSelector } from "react-redux";
 
-export const ContactList = ({ filteredContacts }) => {
+export const ContactList = () => {
+    const contacts = useSelector(contactsSelector);
+    const filter = useSelector(filterSelector);
+    const filteredContacts = !filter ? contacts.filter((el, index) => index <= 9) : contacts.filter(({ name }) => name.toLowerCase().includes(filter.toLowerCase()))
+
     return (
         <ul className={css.phonebookContacts}>
             {filteredContacts.map(({ name, number, id }) => <ContactListitem name={name} number={number} key={id} id={id} />)}
@@ -11,13 +16,6 @@ export const ContactList = ({ filteredContacts }) => {
     )
 }
 
-ContactList.propTypes = {
-    props: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired
-    }))
 
-}
 
 export default ContactList
