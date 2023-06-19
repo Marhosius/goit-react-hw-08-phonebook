@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
-import { addNewContact, contactsSelector } from "store/slice";
+import { contactsSelector } from "store/slice";
 import { useDispatch, useSelector } from "react-redux";
 import Notiflix from "notiflix";
+import { addContactThunk } from "store/thunks";
 
 export const ContactForm = () => {
-    const contacts = useSelector(contactsSelector);
+    const { items } = useSelector(contactsSelector);
     const [name, setName] = useState('')
     const [number, setNumber] = useState('');
     const dispatch = useDispatch()
@@ -19,11 +20,11 @@ export const ContactForm = () => {
 
     const onFormSubmit = (event) => {
         event.preventDefault();
-        if (contacts?.find((el) =>
+        if (items?.find((el) =>
             el.name.toLowerCase() === name.toLowerCase())) {
             Notiflix.Notify.warning(`${name} is already in contacts`)
         } else {
-            dispatch(addNewContact({ id: (nanoid(6)), name: name, number: number }))
+            dispatch(addContactThunk({ id: (nanoid(6)), name: name, phone: number }))
         }
         setName('')
         setNumber('')
