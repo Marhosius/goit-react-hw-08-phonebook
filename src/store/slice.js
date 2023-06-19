@@ -23,7 +23,8 @@ const handleAddContact = (state, { payload }) => {
 }
 const deleteContact = (state, { payload }) => {
     state.contacts.isLoading = false
-    state.contacts.items = state.contacts.items.filter(({ id }) => id !== payload)
+    state.contacts.items = state.contacts.items.filter(({ id }) =>
+        id !== payload)
 }
 
 const slice = createSlice({
@@ -42,12 +43,6 @@ const slice = createSlice({
             .addCase(deleteContactThunk.rejected, handleRejected)
     },
     reducers: {
-        // addNewContact: (state, { payload }) => {
-        //     state.contacts.push(payload)
-        // },
-        // deleteContact: (state, { payload }) => {
-        //     state.contacts = state.contacts.filter(({ id }) => id !== payload)
-        // },
         filterChange: (state, { payload }) => {
             state.filter = payload
         },
@@ -55,7 +50,7 @@ const slice = createSlice({
 })
 
 export const reducer = slice.reducer;
-export const { addNewContact, filterChange } = slice.actions
+export const { filterChange } = slice.actions
 
 // SELECTORS
 

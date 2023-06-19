@@ -13,7 +13,9 @@ export const ContactListitem = ({ name, number, id }) => {
     return (
         <li className={css.phonebookContactsItem}>
             <p className={css.phonebookContactsText}>{name}: {number}</p>
-            <button onClick={onDelete} id={id} className={css.phonebookContactsBtn}><span className={css.phonebookContactsBtnSpan}></span>Delete</button>
+            <button onClick={onDelete} id={id} className={css.phonebookContactsBtn}>
+                <span className={css.phonebookContactsBtnSpan}></span>Delete
+            </button>
         </li>
     )
 }

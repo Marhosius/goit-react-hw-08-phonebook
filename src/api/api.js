@@ -14,6 +14,7 @@ export const fetchContacts = () =>
     }).catch(error => {
         Notiflix.Notify.failure(`${error.message}`)
     })
+
 export const addContact = (data) =>
     fetch('https://648e1cf42de8d0ea11e8916e.mockapi.io/phonebook/contacts', {
         method: 'POST',
@@ -37,7 +38,6 @@ export const deleteContact = (id) =>
             return res.json();
         }
     }).then(tasks => {
-        console.log(tasks.id)
         return tasks.id
     }).catch(error => {
         Notiflix.Notify.failure(`${error.message}`)
