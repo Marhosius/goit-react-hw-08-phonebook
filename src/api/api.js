@@ -1,6 +1,35 @@
-
 import Notiflix from 'notiflix';
 
+
+export const signUp = (data) =>
+    fetch('https://connections-api.herokuapp.com/users/signup', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+    }).then(tasks => {
+        return tasks
+    }).catch(error => {
+        Notiflix.Notify.failure(`${error.message}`)
+    })
+
+export const signIn = (data) =>
+    fetch('https://connections-api.herokuapp.com/users/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data)
+    }).then(res => {
+        if (res.ok) {
+            return res.json();
+        }
+    }).then(tasks => {
+        return tasks
+    }).catch(error => {
+        Notiflix.Notify.failure(`${error.message}`)
+    })
 export const fetchContacts = () =>
     fetch('https://648e1cf42de8d0ea11e8916e.mockapi.io/phonebook/contacts', {
         method: 'GET',
