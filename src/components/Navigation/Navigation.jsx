@@ -15,7 +15,7 @@ const Navigation = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
-                    <Button onClick={() => navigate('/contacts')} color="inherit">Contacts</Button>
+                    <Button onClick={() => navigate('/')} color="inherit">Contacts</Button>
                     {!isAuth ? < Button onClick={() => navigate('/login')} color="inherit">
                         Login
                     </Button> : <UserMenu />}

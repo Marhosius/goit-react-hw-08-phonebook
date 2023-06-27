@@ -10,7 +10,7 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/contacts" element={<Layout />}>
+      <Route path="/" element={<Layout />}>
         <Route index element={<PrivateRoute><Contacts /></PrivateRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
