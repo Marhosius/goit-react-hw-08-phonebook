@@ -5,25 +5,26 @@ const instance = axios.create({
 })
 
 export const setToken = (token) => {
-    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    instance.defaults.headers.common.Authorization = `Bearer ${token}`
 }
 
 export const dellToken = () => {
-    delete instance.defaults.headers.common['Authorization']
+    delete instance.defaults.headers.common.Authorization
 }
 
 export const signUp = async (body) => {
+    console.log('first', body)
     return await instance.post('/users/signup', body)
 }
 
 export const logIn = async (body) => {
     const { data } = await instance.post('/users/login', body)
-    if ('access_token' in data) setToken(data.access_token)
+    if ('token' in data) setToken(data.token)
     return data
 }
 
 export const getProfile = async () => {
-    const { data } = await instance('/users/current')
+    const { data } = await instance.get('/users/current')
     return data
 }
 

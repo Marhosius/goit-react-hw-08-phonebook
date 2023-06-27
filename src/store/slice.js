@@ -49,10 +49,10 @@ const slice = createSlice({
     }
 })
 
-export const reducer = slice.reducer;
+export const contactsReducer = slice.reducer;
 export const { filterChange } = slice.actions
 
 // SELECTORS
 
-export const contactsSelector = (state) => state.contacts
-export const filterSelector = (state) => state.filter
+export const contactsSelector = (state) => state.contacts.contacts
+export const filterSelector = (state) => state.contacts.filter

@@ -9,17 +9,26 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { signUp } from 'api/authorization';
+import Notiflix from 'notiflix';
+import { useNavigate } from 'react-router-dom';
 
 const defaultTheme = createTheme();
 
 const Register = () => {
+    const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
+        signUp({
             name: data.get('name'),
             email: data.get('email'),
             password: data.get('password'),
+        }).then(() => {
+            Notiflix.Notify.success('Register success')
+            navigate('/login')
+        }).catch(() => {
+            Notiflix.Notify.failure('Register failure')
         });
     };
 
