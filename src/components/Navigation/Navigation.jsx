@@ -16,7 +16,9 @@ const Navigation = () => {
             <AppBar position="static">
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
                     <Button onClick={() => navigate('/contacts')} color="inherit">Contacts</Button>
-                    {!isAuth ? < Button onClick={() => navigate('/login')} color="inherit">Login</Button> : <UserMenu />}
+                    {!isAuth ? < Button onClick={() => navigate('/login')} color="inherit">
+                        Login
+                    </Button> : <UserMenu />}
                 </Toolbar>
             </AppBar>
         </Box >

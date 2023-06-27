@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { nanoid } from "nanoid";
 import css from "./ContactForm.module.css";
 import { contactsSelector } from "store/slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -24,7 +23,7 @@ export const ContactForm = () => {
             el.name.toLowerCase() === name.toLowerCase())) {
             Notiflix.Notify.warning(`${name} is already in contacts`)
         } else {
-            dispatch(addContactThunk({ id: (nanoid(6)), name: name, phone: number }))
+            dispatch(addContactThunk({ name: name, number: number }))
         }
         setName('')
         setNumber('')

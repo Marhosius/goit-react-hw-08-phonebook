@@ -22,10 +22,15 @@ const Login = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        dispatch(loginThunk({
-            email: data.get('email'),
-            password: data.get('password'),
-        })).unwrap().then(() => navigate('/contacts')).catch(() => Notiflix.Notify.failure('Login failure'))
+        if (data.get('email') && data.get('password')) {
+            dispatch(loginThunk({
+                email: data.get('email'),
+                password: data.get('password'),
+            })).unwrap().then(() => navigate('/contacts')).catch(() =>
+                Notiflix.Notify.failure('Login failure'))
+        } else {
+            Notiflix.Notify.warning('Fill all fields')
+        }
     }
 
     return (

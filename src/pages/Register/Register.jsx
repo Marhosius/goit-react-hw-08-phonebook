@@ -20,16 +20,20 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        signUp({
-            name: data.get('name'),
-            email: data.get('email'),
-            password: data.get('password'),
-        }).then(() => {
-            Notiflix.Notify.success('Register success')
-            navigate('/login')
-        }).catch(() => {
-            Notiflix.Notify.failure('Register failure')
-        });
+        if (data.get('name') && data.get('email') && data.get('password')) {
+            signUp({
+                name: data.get('name'),
+                email: data.get('email'),
+                password: data.get('password'),
+            }).then(() => {
+                Notiflix.Notify.success('Register success')
+                navigate('/login')
+            }).catch(() => {
+                Notiflix.Notify.failure('Register failure')
+            });
+        } else {
+            Notiflix.Notify.warning('Fill all fields')
+        }
     };
 
     return (

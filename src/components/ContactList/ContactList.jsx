@@ -20,7 +20,7 @@ export const ContactList = () => {
 
     return (
         <ul className={css.phonebookContacts}>
-            {filteredContacts.map(({ name, phone: number, id }) =>
+            {filteredContacts.map(({ name, number, id }) =>
                 <ContactListitem name={name} number={number} key={id} id={id} />)}
         </ul>
     )

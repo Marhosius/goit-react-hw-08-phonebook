@@ -17,7 +17,7 @@ const UserMenu = () => {
     return (
         <Toolbar>
             <Typography variant="h7" component="div" sx={{ flexGrow: 1 }}>
-                {profile.email}
+                {profile?.email}
             </Typography>
             <Button onClick={() => {
                 handleLogOut();
