@@ -5,13 +5,15 @@ import Register from "pages/Register/Register";
 import { Route, Routes } from "react-router-dom";
 import PrivateRoute from "./Privat Rote/Privat Rote";
 import PublicRoute from "./PublicRoute/PublicRoute";
+import StartingPage from "./StartingPage/StartingPage";
 
 export const App = () => {
 
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route index element={<PrivateRoute><Contacts /></PrivateRoute>} />
+        <Route index element={<StartingPage />} />
+        <Route path="/contacts" element={<PrivateRoute><Contacts /></PrivateRoute>} />
         <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
         <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
       </Route>

@@ -26,7 +26,7 @@ const Login = () => {
             dispatch(loginThunk({
                 email: data.get('email'),
                 password: data.get('password'),
-            })).unwrap().then(() => navigate('/')).catch(() =>
+            })).unwrap().then(() => navigate('/contacts')).catch(() =>
                 Notiflix.Notify.failure('Login failure'))
         } else {
             Notiflix.Notify.warning('Fill all fields')
