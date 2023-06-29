@@ -5,12 +5,16 @@ import css from "./ContactList.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchContactsThunk } from "store/thunks";
+import NotFound from "./NotFound/NotFound";
 
 export const ContactList = () => {
+    const { profile } = useSelector((state) => state.authorization)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(fetchContactsThunk())
-    }, [dispatch])
+        if (profile) {
+            dispatch(fetchContactsThunk())
+        }
+    }, [dispatch, profile])
 
     const { items } = useSelector(contactsSelector);
     const filter = useSelector(filterSelector);
@@ -19,10 +23,11 @@ export const ContactList = () => {
             name.toLowerCase().includes(filter.toLowerCase()))
 
     return (
-        <ul className={css.phonebookContacts}>
+        filteredContacts?.length > 0 ? (<ul className={css.phonebookContacts}>
             {filteredContacts.map(({ name, number, id }) =>
                 <ContactListitem name={name} number={number} key={id} id={id} />)}
-        </ul>
+        </ul>) : <NotFound />
+
     )
 }
 
